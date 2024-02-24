@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script type="module" crossorigin src="/vanilla-app-template/commonHelpers.js"></script>
+  <link rel="modulepreload" crossorigin href="/vanilla-app-template/assets/vendor-e24866db.js">
+  <link rel="stylesheet" href="/vanilla-app-template/assets/vendor-cf6910df.css">
+  <link rel="stylesheet" href="/vanilla-app-template/assets/index-d48f632c.css">
+</head>
+
+<body>
+
+  <form class="form">
+    <input type="text" class="text-form" name="query" placeholder="Search images..."/>
+    <button  type="submit" class="button">Search</button>
+  </form>
+
+  <div class="container gallery-container">
+    <ul class="gallery-list">
+    </ul>
+  </div>
+
+  <div class="loader-container">
+    <div class="loader hidden"></div>
+  </div>
+
+  <div class="loader-container">
+    <button type="button" class="btn-load-more hidden" data-action="load-more">
+      <span class="label">Load more</span>
+    </button>
+  </div>
+
+  
+  
+  
+  
+</body>
+
+</html>
