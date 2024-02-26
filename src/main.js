@@ -60,7 +60,7 @@ async function onLoadMoreClick() {
 function renderHits(hits) {
     const markup = hitsTemplate(hits);
     refs.listElem.insertAdjacentHTML('beforeend', markup);
-    const lightbox = new SimpleLightbox('.gallery-card a', {
+    const lightbox = new SimpleLightbox('.gallery a', {
         captionsData: 'alt',
         captionDelay: 250,
     });
@@ -98,3 +98,14 @@ function showError(msg) {
         position: 'topRight',
     });
 }
+
+let elem = document.querySelector('.gallery');
+let rect = elem.getBoundingClientRect();
+for (const key in rect) {
+  if (typeof rect[key] !== 'function') {
+    let para = document.createElement('p');
+    para.textContent = `${key} : ${rect[key]}`;
+    document.body.appendChild(para);
+  }
+}
+window.scrollBy(0, -window.innerHeight);
