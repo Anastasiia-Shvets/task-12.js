@@ -24,7 +24,7 @@ async function onFormSubmit(ev) {
         showError('Please enter text to search for.');
         return;
     }
-    showLoader();
+    // showLoader();
 
     try {
         const data = await searchGallery(query);
@@ -55,6 +55,14 @@ async function onLoadMoreClick() {
     renderHits(data.hits);
     hideLoader();
     checkBtnStatus();
+    const { height: cardHeight } = document
+        .querySelector('.gallery')
+        .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth',
+    });
 }
 
 function renderHits(hits) {
@@ -99,13 +107,3 @@ function showError(msg) {
     });
 }
 
-let elem = document.querySelector('.gallery');
-let rect = elem.getBoundingClientRect();
-for (const key in rect) {
-  if (typeof rect[key] !== 'function') {
-    let para = document.createElement('p');
-    para.textContent = `${key} : ${rect[key]}`;
-    document.body.appendChild(para);
-  }
-}
-window.scrollBy(0, -window.innerHeight);
