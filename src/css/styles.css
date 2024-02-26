@@ -51,6 +51,7 @@ h2 {
 ul,
 li {
   list-style: none;
+  padding: 0;
 }
 
 img {
@@ -245,9 +246,18 @@ img {
   align-items: center;
 }
 
-.item {}
+.list-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-weight: 600;
+    font-size: 16px;
+}
 
-.list-item {}
+.item {
+  font-weight: 400;
+    font-size: 16px;
+}
 
 .item-text {
   border-color: #f9f5f5ed;
