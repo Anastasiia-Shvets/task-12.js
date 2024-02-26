@@ -1,11 +1,16 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 function hitTemplate(hit) {
-    const { imageUrl, webformatURL, alt, likes, views, comments, downloads } = hit;
+    const {
+      largeImageURL,
+      webformatURL,
+      alt,
+      likes,
+      views,
+      comments,
+      downloads,
+    } = hit;
     return `<li class="gallery-item">
     <div class="gallery">
-    <a class="gallery-link" href="${imageUrl}">
+    <a class="gallery-link" href="${largeImageURL}">
     <img
         class="gallery-image"
         src="${webformatURL}"

@@ -1,5 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 
 import { searchGallery } from './js/pixabay-api';
 import { hitsTemplate } from './js/render-functions';
@@ -25,20 +28,20 @@ async function onFormSubmit(ev) {
 
     try {
         const data = await searchGallery(query);
-    if (data.totalHits === 0) {
-        showError(
-            'Sorry, there are no images matching your search query. Please try again!'
-        );
-    }
-    maxPage = Math.ceil(data.totalHits / 15);
-    refs.listElem.innerHTML = '';
-    renderHits(data.hits);  
+        if (data.totalHits === 0) {
+            showError(
+                'Sorry, there are no images matching your search query. Please try again!'
+            );
+        }
+        maxPage = Math.ceil(data.totalHits / 15);
+        refs.listElem.innerHTML = '';
+        renderHits(data.hits);
     } catch (error) {
         showError(error.message);
         maxPage = 0;
         refs.listElem.innerHTML = '';
     }
-    
+
     hideLoader();
     checkBtnStatus();
 
@@ -57,6 +60,11 @@ async function onLoadMoreClick() {
 function renderHits(hits) {
     const markup = hitsTemplate(hits);
     refs.listElem.insertAdjacentHTML('beforeend', markup);
+    const lightbox = new SimpleLightbox('.gallery-card a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+    });
+    lightbox.refresh();
 }
 
 function showLoader() {
